@@ -1,0 +1,28 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Junge&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { font-family: "Junge", serif; }
+
+/* 遇到用户偏好“减少动态”，强制把动画/过渡几乎去掉 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 减少重绘/合成导致的闪烁 */
+.no-flicker {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: opacity, transform;
+}
+
+/* 进度条只用 CSS 过渡，避免 JS 抖动 */
+.progress-bar {
+  transition: width 220ms ease;
+}
