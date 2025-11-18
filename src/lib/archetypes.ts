@@ -158,3 +158,5 @@ export const ARCHETYPE_INFO: Record<
     image: "/archetypes/shadow.webp",
   },
 };
+
+export { archetypeDescriptions, generateCombinedNarrative } from "./archetypeDescriptions";

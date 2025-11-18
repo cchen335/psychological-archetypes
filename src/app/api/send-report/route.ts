@@ -1,12 +1,15 @@
 // src/app/api/send-report/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+
+// archetypes.ts 只负责基本信息 + key 类型
+import { ARCHETYPE_INFO, ArchetypeKey } from "@/lib/archetypes";
+
+// archetypeDescriptions.ts 负责三段 narrative 文案
 import {
-  ARCHETYPE_INFO,
   archetypeDescriptions,
   generateCombinedNarrative,
-  ArchetypeKey,
-} from "@/lib/archetypes";
+} from "@/lib/archetypeDescriptions";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM = process.env.REPORT_FROM_EMAIL || "report@resend.dev";
@@ -64,7 +67,7 @@ export async function POST(req: NextRequest) {
       const info = ARCHETYPE_INFO[key as ArchetypeKey];
 
       const label =
-        a?.label || info?.label || "Archetype";
+        a?.label || info?.name || "Archetype";
       const role =
         a?.role ||
         (index === 0
