@@ -1,154 +1,186 @@
 // src/lib/emailTemplate.ts
 
-type ArchetypeEmailItem = {
-  key: string;
-  label: string;
-  role: string;
-  strength: string;
-  shadow: string;
-};
-
+/**
+ * 生成 Archetype 报告的 HTML 邮件
+ * items: [{ key, label, role, strength, shadow }]
+ * combinedNarrative: 综合长文案
+ */
 export function generateArchetypeEmailHTML({
   items,
   combinedNarrative,
-  domain,
-}: {
-  items: ArchetypeEmailItem[];
-  combinedNarrative: string;
-  domain: string;
-}) {
-  // 确保没有尾部斜杠，避免重复 //
-  const baseUrl = (domain || "").replace(/\/+$/, "");
+}: any) {
+  // 直接写死站点域名，最省心的做法
+  const baseUrl = "https://psychological-archetypes.vercel.app";
 
   return `
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
 
-  <!-- Junge font -->
-  <link href="https://fonts.googleapis.com/css2?family=Junge&display=swap" rel="stylesheet" />
+    <!-- Junge 字体 -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Junge&display=swap"
+      rel="stylesheet"
+    />
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Junge', serif;
-      background: #ffffff;
-      color: #111111;
-      line-height: 1.7;
-    }
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Junge', serif;
+        background: #ffffff;
+        color: #111111;
+        line-height: 1.7;
+      }
 
-    .container {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 20px 48px;
+      }
 
-    h1 {
-      text-align: center;
-      font-size: 28px;
-      margin-bottom: 40px;
-      letter-spacing: 0.05em;
-    }
+      h1 {
+        text-align: center;
+        font-size: 24px;
+        letter-spacing: 0.18em;
+        margin: 0 0 36px;
+      }
 
-    .cards {
-      display: flex;
-      gap: 24px;
-      justify-content: center;
-      margin-bottom: 40px;
-    }
+      /* 为了兼容邮件客户端，这里不用 flex，用 inline-block + text-align */
+      .cards {
+        text-align: center;
+        font-size: 0; /* 去掉 inline-block 之间的空隙 */
+        margin: 0 0 40px;
+      }
 
-    .card {
-      background: #fafafa;
-      border-radius: 14px;
-      padding: 14px;
-      width: 30%;
-      min-width: 160px;
-      text-align: left;
-    }
+      .card {
+        display: inline-block;
+        vertical-align: top;
+        width: 30%;
+        min-width: 160px;
+        max-width: 220px;
+        margin: 0 8px;
+        background: #fafafa;
+        border-radius: 16px;
+        overflow: hidden;
+        font-size: 13px; /* 恢复文字大小 */
+      }
 
-    .card img {
-      width: 100%;
-      display: block;
-      border-radius: 12px;
-      margin-bottom: 12px;
-    }
+      .card-inner {
+        padding: 14px 16px 18px;
+      }
 
-    .label {
-      letter-spacing: 0.28em;
-      font-size: 12px;
-      margin-bottom: 6px;
-      color: #444444;
-    }
+      /* 固定图片高度，保证三张卡片顶部对齐 */
+      .card-image {
+        width: 100%;
+        height: 180px;
+        border-radius: 16px 16px 0 0;
+        background: #f4f4f4;
+        overflow: hidden;
+      }
 
-    .role {
-      font-size: 12px;
-      color: #888888;
-      margin-bottom: 12px;
-    }
+      .card-image img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 16px 16px 0 0;
+        object-fit: cover;
+      }
 
-    .traits {
-      font-size: 12px;
-      color: #777777;
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
+      .label {
+        letter-spacing: 0.26em;
+        font-size: 11px;
+        margin-top: 14px;
+        margin-bottom: 4px;
+        color: #444444;
+      }
 
-    h2 {
-      font-size: 20px;
-      text-align: center;
-      margin-top: 10px;
-      margin-bottom: 30px;
-    }
+      .role {
+        font-size: 11px;
+        color: #888888;
+        margin-bottom: 12px;
+      }
 
-    .narrative {
-      max-width: 780px;
-      margin: 0 auto;
-      font-size: 14px;
-      color: #333333;
-      line-height: 1.8;
-    }
+      .traits {
+        font-size: 11px;
+        color: #666666;
+        line-height: 1.6;
+      }
 
-    @media (max-width: 600px) {
-      .cards { flex-direction: column; }
-      .card { width: 100%; }
-    }
-  </style>
-</head>
+      .traits strong {
+        text-transform: uppercase;
+      }
 
-<body>
-  <div class="container">
+      h2 {
+        font-size: 18px;
+        text-align: center;
+        margin: 0 0 26px;
+        letter-spacing: 0.08em;
+      }
 
-    <h1>YOUR ARCHETYPAL CONSTELLATION</h1>
+      .narrative {
+        max-width: 780px;
+        margin: 0 auto;
+        font-size: 14px;
+        color: #333333;
+        line-height: 1.8;
+      }
 
-    <div class="cards">
-      ${items
-        .map(
-          (i) => `
-        <div class="card">
-          <img src="${baseUrl}/archetypes/${i.key}.webp" alt="${i.label}" />
-          <div class="label">${i.label.toUpperCase()}</div>
-          <div class="role">${i.role}</div>
-          <div class="traits">
-            <strong>STRENGTH</strong><br />${i.strength}<br/><br/>
-            <strong>SHADOW</strong><br />${i.shadow}
+      @media (max-width: 600px) {
+        .card {
+          width: 90%;
+          max-width: none;
+          margin: 0 0 16px;
+        }
+
+        .cards {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>YOUR ARCHETYPAL CONSTELLATION</h1>
+
+      <div class="cards">
+        ${items
+          .map(
+            (i: any) => `
+          <div class="card">
+            <div class="card-image">
+              <img
+                src="${baseUrl}/archetypes/${i.key}.webp?v=1"
+                alt="${i.label}"
+              />
+            </div>
+            <div class="card-inner">
+              <div class="label">${i.label.toUpperCase()}</div>
+              <div class="role">${i.role}</div>
+              <div class="traits">
+                <strong>strength</strong>: ${i.strength}<br/>
+                <strong>shadow</strong>: ${i.shadow}
+              </div>
+            </div>
           </div>
-        </div>
-      `
-        )
-        .join("")}
+        `
+          )
+          .join("")}
+      </div>
+
+      <h2>${items[0].label} × ${items[1].label} × ${items[2].label}</h2>
+
+      <div class="narrative">
+        ${combinedNarrative}
+      </div>
     </div>
-
-    <h2>${items[0].label} × ${items[1].label} × ${items[2].label}</h2>
-
-    <div class="narrative">
-      ${combinedNarrative}
-    </div>
-
-  </div>
-</body>
+  </body>
 </html>
 `;
 }
