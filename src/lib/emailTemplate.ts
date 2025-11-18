@@ -1,34 +1,24 @@
 // src/lib/emailTemplate.ts
 
-const FALLBACK_DOMAIN = "https://psychological-archetypes.vercel.app";
-
-function ensureAbsoluteUrl(url: string | undefined | null): string {
-  if (!url) return FALLBACK_DOMAIN;
-
-  // 去掉两端空格
-  const trimmed = url.trim();
-
-  // 已经是 http(s) 开头就直接用
-  if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) {
-    return trimmed.replace(/\/+$/, ""); // 去掉结尾多余的 /
-  }
-
-  // 不是 http(s) 的话，补上 https://
-  return `https://${trimmed.replace(/\/+$/, "")}`;
-}
+type ArchetypeEmailItem = {
+  key: string;
+  label: string;
+  role: string;
+  strength: string;
+  shadow: string;
+};
 
 export function generateArchetypeEmailHTML({
   items,
   combinedNarrative,
   domain,
-}: any) {
-  // 优先使用参数传进来的 domain，其次是环境变量，最后使用固定 fallback
-  const baseDomain = ensureAbsoluteUrl(
-    domain ||
-      process.env.NEXT_PUBLIC_SITE_URL ||
-      process.env.VERCEL_URL ||
-      FALLBACK_DOMAIN
-  );
+}: {
+  items: ArchetypeEmailItem[];
+  combinedNarrative: string;
+  domain: string;
+}) {
+  // 确保没有尾部斜杠，避免重复 //
+  const baseUrl = (domain || "").replace(/\/+$/, "");
 
   return `
 <!DOCTYPE html>
@@ -37,8 +27,8 @@ export function generateArchetypeEmailHTML({
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Junge 字体 -->
-  <link href="https://fonts.googleapis.com/css2?family=Junge&display=swap" rel="stylesheet">
+  <!-- Junge font -->
+  <link href="https://fonts.googleapis.com/css2?family=Junge&display=swap" rel="stylesheet" />
 
   <style>
     body {
@@ -46,7 +36,7 @@ export function generateArchetypeEmailHTML({
       padding: 0;
       font-family: 'Junge', serif;
       background: #ffffff;
-      color: #111;
+      color: #111111;
       line-height: 1.7;
     }
 
@@ -76,32 +66,32 @@ export function generateArchetypeEmailHTML({
       padding: 14px;
       width: 30%;
       min-width: 160px;
-      text-align: center;
+      text-align: left;
     }
 
     .card img {
       width: 100%;
+      display: block;
       border-radius: 12px;
       margin-bottom: 12px;
-      display: block;
     }
 
     .label {
       letter-spacing: 0.28em;
       font-size: 12px;
       margin-bottom: 6px;
-      color: #444;
+      color: #444444;
     }
 
     .role {
       font-size: 12px;
-      color: #888;
+      color: #888888;
       margin-bottom: 12px;
     }
 
     .traits {
       font-size: 12px;
-      color: #777;
+      color: #777777;
       margin-bottom: 20px;
       line-height: 1.6;
     }
@@ -117,7 +107,7 @@ export function generateArchetypeEmailHTML({
       max-width: 780px;
       margin: 0 auto;
       font-size: 14px;
-      color: #333;
+      color: #333333;
       line-height: 1.8;
     }
 
@@ -131,19 +121,19 @@ export function generateArchetypeEmailHTML({
 <body>
   <div class="container">
 
-    <h1>Your archetypal constellation.</h1>
+    <h1>YOUR ARCHETYPAL CONSTELLATION</h1>
 
     <div class="cards">
       ${items
         .map(
-          (i: any) => `
+          (i) => `
         <div class="card">
-          <img src="${baseDomain}/archetypes/${i.key}.webp" alt="${i.key}" />
-          <div class="label">${String(i.label || i.key).toUpperCase()}</div>
+          <img src="${baseUrl}/archetypes/${i.key}.webp" alt="${i.label}" />
+          <div class="label">${i.label.toUpperCase()}</div>
           <div class="role">${i.role}</div>
           <div class="traits">
-            <strong>strength:</strong> ${i.strength}<br/>
-            <strong>shadow:</strong> ${i.shadow}
+            <strong>STRENGTH</strong><br />${i.strength}<br/><br/>
+            <strong>SHADOW</strong><br />${i.shadow}
           </div>
         </div>
       `
