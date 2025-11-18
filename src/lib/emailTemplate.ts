@@ -1,4 +1,35 @@
-export function generateArchetypeEmailHTML({ items, combinedNarrative, domain }: any) {
+// src/lib/emailTemplate.ts
+
+const FALLBACK_DOMAIN = "https://psychological-archetypes.vercel.app";
+
+function ensureAbsoluteUrl(url: string | undefined | null): string {
+  if (!url) return FALLBACK_DOMAIN;
+
+  // 去掉两端空格
+  const trimmed = url.trim();
+
+  // 已经是 http(s) 开头就直接用
+  if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) {
+    return trimmed.replace(/\/+$/, ""); // 去掉结尾多余的 /
+  }
+
+  // 不是 http(s) 的话，补上 https://
+  return `https://${trimmed.replace(/\/+$/, "")}`;
+}
+
+export function generateArchetypeEmailHTML({
+  items,
+  combinedNarrative,
+  domain,
+}: any) {
+  // 优先使用参数传进来的 domain，其次是环境变量，最后使用固定 fallback
+  const baseDomain = ensureAbsoluteUrl(
+    domain ||
+      process.env.NEXT_PUBLIC_SITE_URL ||
+      process.env.VERCEL_URL ||
+      FALLBACK_DOMAIN
+  );
+
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -52,6 +83,7 @@ export function generateArchetypeEmailHTML({ items, combinedNarrative, domain }:
       width: 100%;
       border-radius: 12px;
       margin-bottom: 12px;
+      display: block;
     }
 
     .label {
@@ -106,8 +138,8 @@ export function generateArchetypeEmailHTML({ items, combinedNarrative, domain }:
         .map(
           (i: any) => `
         <div class="card">
-          <img src="${domain}/archetypes/${i.key}.webp" alt="${i.key}" />
-          <div class="label">${i.label.toUpperCase()}</div>
+          <img src="${baseDomain}/archetypes/${i.key}.webp" alt="${i.key}" />
+          <div class="label">${String(i.label || i.key).toUpperCase()}</div>
           <div class="role">${i.role}</div>
           <div class="traits">
             <strong>strength:</strong> ${i.strength}<br/>
