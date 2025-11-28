@@ -1,8 +1,7 @@
-﻿import { Suspense } from "react";
-import ResultPageClient from "./ResultPageClient";
+﻿"use client";
 
-// 强制动态渲染，不进行静态生成
-export const dynamic = 'force-dynamic';
+import { Suspense } from "react";
+import ResultPageClient from "./ResultPageClient";
 
 export default function ResultPage() {
   return (
