@@ -2,7 +2,45 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArchetypeKey, EMPTY_VECTOR } from "../../lib/archetypes";
+
+// ✅ 定义 ArchetypeKey 类型（原来从 archetypes.ts 导入，现在直接定义）
+type ArchetypeKey =
+  | "sage"
+  | "philosopher"
+  | "explorer"
+  | "creator"
+  | "lover"
+  | "caregiver"
+  | "everyman"
+  | "hero"
+  | "ruler"
+  | "visionary"
+  | "magician"
+  | "trickster"
+  | "innocent"
+  | "mother"
+  | "rebirth"
+  | "shadow";
+
+// ✅ 空向量初始值（原来从 archetypes.ts 导入，现在直接定义）
+const EMPTY_VECTOR: Record<ArchetypeKey, number> = {
+  sage: 0,
+  philosopher: 0,
+  explorer: 0,
+  creator: 0,
+  lover: 0,
+  caregiver: 0,
+  everyman: 0,
+  hero: 0,
+  ruler: 0,
+  visionary: 0,
+  magician: 0,
+  trickster: 0,
+  innocent: 0,
+  mother: 0,
+  rebirth: 0,
+  shadow: 0,
+};
 
 /** 题目结构 */
 type Option = {
@@ -108,8 +146,24 @@ const finish = useCallback(() => {
     setIdx((i) => Math.max(0, i - 1));
   }, []);
 
+  const handleReturnHome = () => {
+    if (confirm("Are you sure you want to return to the home page? Your progress will be lost.")) {
+      router.push("/");
+    }
+  };
+
   return (
     <main className="relative min-h-screen text-white font-[Junge] no-flicker">
+      {/* 返回主页按钮 */}
+      <div className="absolute top-6 left-6 z-10">
+        <button
+          onClick={handleReturnHome}
+          className="text-white/60 hover:text-white transition-colors text-sm flex items-center gap-1"
+        >
+          ← Home
+        </button>
+      </div>
+
       {/* 顶部进度条 */}
       <div className="max-w-3xl mx-auto px-6 pt-12">
         <div className="mb-4 text-sm opacity-70">

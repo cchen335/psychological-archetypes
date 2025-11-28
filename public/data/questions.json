@@ -1,292 +1,290 @@
 ﻿[
   {
     "id": 1,
-    "text": "When plans fall apart, your instinct is to—",
+    "text": "When your plans suddenly fall apart, what do you typically do first?",
     "options": [
-      { "label": "Improvise a new route and keep moving.", "weights": { "trickster": 2, "explorer": 1 } },
-      { "label": "Step back and clarify what still matters.", "weights": { "sage": 2, "philosopher": 1 } },
-      { "label": "Rally others and rebuild fast.", "weights": { "hero": 2, "ruler": 1 } }
+      { "label": "Quickly come up with a new plan and keep going", "weights": { "trickster": 2, "explorer": 1 } },
+      { "label": "Take a moment to think about what really matters now", "weights": { "sage": 2, "philosopher": 1 } },
+      { "label": "Get people together and start fixing things right away", "weights": { "hero": 2, "ruler": 1 } }
     ]
   },
   {
     "id": 2,
-    "text": "A friend is overwhelmed. You tend to—",
+    "text": "A close friend calls you upset about something in their life. How do you usually respond?",
     "options": [
-      { "label": "Comfort them with calm presence.", "weights": { "caregiver": 2, "lover": 1 } },
-      { "label": "Help sort the chaos into steps.", "weights": { "sage": 2, "ruler": 1 } },
-      { "label": "Lighten the mood and reframe their story.", "weights": { "trickster": 2, "magician": 1 } }
+      { "label": "Just listen and let them know they're not alone", "weights": { "caregiver": 2, "lover": 1 } },
+      { "label": "Help them break down the problem into smaller pieces", "weights": { "sage": 2, "ruler": 1 } },
+      { "label": "Try to cheer them up or give them a fresh perspective", "weights": { "trickster": 2, "magician": 1 } }
     ]
   },
   {
     "id": 3,
-    "text": "Given a free weekend, you would most likely—",
+    "text": "You have a completely free weekend with no obligations. What sounds most appealing?",
     "options": [
-      { "label": "Go somewhere new with minimal plans.", "weights": { "explorer": 2, "visionary": 1 } },
-      { "label": "Make something—music, images, or objects.", "weights": { "creator": 2, "lover": 1 } },
-      { "label": "Do something simple and restorative.", "weights": { "innocent": 2, "everyman": 1 } }
+      { "label": "Going somewhere I've never been before, even without much planning", "weights": { "explorer": 2, "visionary": 1 } },
+      { "label": "Working on a creative project—art, music, writing, or building something", "weights": { "creator": 2, "lover": 1 } },
+      { "label": "Doing something simple and relaxing that recharges me", "weights": { "innocent": 2, "everyman": 1 } }
     ]
   },
   {
     "id": 4,
-    "text": "When conflict appears, you first try to—",
+    "text": "When there's a disagreement between you and someone else, what's your first instinct?",
     "options": [
-      { "label": "Set boundaries fast and take charge.", "weights": { "ruler": 2, "hero": 1 } },
-      { "label": "Look for what misunderstanding caused it.", "weights": { "sage": 2, "philosopher": 1 } },
-      { "label": "Soften the tension with humor or care.", "weights": { "lover": 2, "trickster": 1 } }
+      { "label": "Set clear boundaries and address it directly", "weights": { "ruler": 2, "hero": 1 } },
+      { "label": "Try to understand where the miscommunication happened", "weights": { "sage": 2, "philosopher": 1 } },
+      { "label": "Use humor or kindness to ease the tension", "weights": { "lover": 2, "trickster": 1 } }
     ]
   },
   {
     "id": 5,
-    "text": "In your creative process, you naturally—",
+    "text": "When you're working on something creative (even just a work email or planning an event), you usually—",
     "options": [
-      { "label": "Dive in and let intuition lead.", "weights": { "creator": 2, "magician": 1 } },
-      { "label": "Build ideas into clear structure.", "weights": { "sage": 2, "philosopher": 1 } },
-      { "label": "Shape what you feel into connection.", "weights": { "lover": 2, "innocent": 1 } }
+      { "label": "Follow my instincts and see where they take me", "weights": { "creator": 2, "magician": 1 } },
+      { "label": "Organize my thoughts first and then fill in the details", "weights": { "sage": 2, "philosopher": 1 } },
+      { "label": "Think about how it will make others feel", "weights": { "lover": 2, "innocent": 1 } }
     ]
   },
   {
     "id": 6,
-    "text": "Faced with a big decision, you usually—",
+    "text": "You're facing a big life decision (like changing jobs, moving, or ending a relationship). How do you approach it?",
     "options": [
-      { "label": "Follow what feels alive right now.", "weights": { "explorer": 2, "lover": 1 } },
-      { "label": "Design a structure and evaluate outcomes.", "weights": { "ruler": 2, "sage": 1 } },
-      { "label": "Test a small version before committing.", "weights": { "creator": 2, "magician": 1 } }
+      { "label": "Go with what feels right in my gut, even if I can't fully explain it", "weights": { "explorer": 2, "lover": 1 } },
+      { "label": "Write out a plan, weigh the pros and cons carefully", "weights": { "ruler": 2, "sage": 1 } },
+      { "label": "Try a small version of the change first to see how it feels", "weights": { "creator": 2, "magician": 1 } }
     ]
   },
   {
     "id": 7,
-    "text": "After a setback, your pattern is to—",
+    "text": "After experiencing a setback or disappointment, you tend to—",
     "options": [
-      { "label": "Shed the old and start anew.", "weights": { "rebirth": 2, "explorer": 1 } },
-      { "label": "Reflect and extract lessons.", "weights": { "philosopher": 2, "sage": 1 } },
-      { "label": "Reconnect with what truly matters.", "weights": { "innocent": 2, "lover": 1 } }
+      { "label": "Let go of what didn't work and start fresh", "weights": { "rebirth": 2, "explorer": 1 } },
+      { "label": "Reflect on what happened and what I can learn from it", "weights": { "philosopher": 2, "sage": 1 } },
+      { "label": "Reconnect with what truly matters to me", "weights": { "innocent": 2, "lover": 1 } }
     ]
   },
   {
     "id": 8,
-    "text": "In group work, you often become—",
+    "text": "When working on a team project, you often end up being—",
     "options": [
-      { "label": "The coordinator who sets direction.", "weights": { "ruler": 2, "visionary": 1 } },
-      { "label": "The stabilizer who keeps harmony.", "weights": { "caregiver": 2, "everyman": 1 } },
-      { "label": "The pathfinder who opens options.", "weights": { "explorer": 2, "creator": 1 } }
+      { "label": "The person who helps everyone stay organized and on track", "weights": { "ruler": 2, "visionary": 1 } },
+      { "label": "The one who makes sure everyone feels heard and included", "weights": { "caregiver": 2, "everyman": 1 } },
+      { "label": "The person who suggests new approaches or directions", "weights": { "explorer": 2, "creator": 1 } }
     ]
   },
   {
     "id": 9,
-    "text": "You feel most in flow when—",
+    "text": "When do you feel most 'in the zone' or fully engaged?",
     "options": [
-      { "label": "Solving something complex with focus.", "weights": { "sage": 2, "creator": 1 } },
-      { "label": "Moving freely through change.", "weights": { "explorer": 2, "visionary": 1 } },
-      { "label": "Working with people who vibe naturally.", "weights": { "lover": 2, "everyman": 1 } }
+      { "label": "When I'm solving a complex puzzle or learning something new", "weights": { "sage": 2, "creator": 1 } },
+      { "label": "When I'm moving through experiences without too much structure", "weights": { "explorer": 2, "visionary": 1 } },
+      { "label": "When I'm with people who just 'get' me", "weights": { "lover": 2, "everyman": 1 } }
     ]
   },
   {
     "id": 10,
-    "text": "Choosing a gift, you go for—",
+    "text": "If you're picking a gift for someone important to you, you're most likely to choose—",
     "options": [
-      { "label": "Something that feels emotionally right.", "weights": { "lover": 2, "caregiver": 1 } },
-      { "label": "A handmade or custom piece.", "weights": { "creator": 2, "magician": 1 } },
-      { "label": "A book or tool that grows the mind.", "weights": { "sage": 2, "philosopher": 1 } }
+      { "label": "Something that reminds them of a meaningful moment we shared", "weights": { "lover": 2, "caregiver": 1 } },
+      { "label": "Something I made or customized specifically for them", "weights": { "creator": 2, "magician": 1 } },
+      { "label": "A book, tool, or experience that helps them grow", "weights": { "sage": 2, "philosopher": 1 } }
     ]
   },
   {
     "id": 11,
-    "text": "When you see injustice, you tend to—",
+    "text": "When you witness something unfair or harmful happening to someone, you're most likely to—",
     "options": [
-      { "label": "Stand up and act decisively.", "weights": { "hero": 2, "ruler": 1 } },
-      { "label": "Speak truth and educate calmly.", "weights": { "philosopher": 2, "sage": 1 } },
-      { "label": "Protect those who are harmed.", "weights": { "caregiver": 2, "mother": 1 } }
+      { "label": "Step in and do something about it immediately", "weights": { "hero": 2, "ruler": 1 } },
+      { "label": "Calmly explain why it's wrong and try to educate others", "weights": { "philosopher": 2, "sage": 1 } },
+      { "label": "Focus on supporting the person who was harmed", "weights": { "caregiver": 2, "mother": 1 } }
     ]
   },
   {
     "id": 12,
-    "text": "At a social gathering, you are most likely to—",
+    "text": "At a social gathering with people you don't know well, you tend to—",
     "options": [
-      { "label": "Connect many circles playfully.", "weights": { "trickster": 2, "everyman": 1 } },
-      { "label": "Pull one person into a deep talk.", "weights": { "lover": 2, "explorer": 1 } },
-      { "label": "Observe quietly and read the vibe.", "weights": { "sage": 2, "philosopher": 1 } }
+      { "label": "Move between groups and introduce people to each other", "weights": { "trickster": 2, "everyman": 1 } },
+      { "label": "Find one or two people and have deeper conversations", "weights": { "lover": 2, "explorer": 1 } },
+      { "label": "Hang back a bit and observe how people interact", "weights": { "sage": 2, "philosopher": 1 } }
     ]
   },
   {
     "id": 13,
-    "text": "When routines get stale, you—",
+    "text": "When your daily routine starts to feel boring or draining, you usually—",
     "options": [
-      { "label": "Change scene and rediscover energy.", "weights": { "rebirth": 2, "explorer": 1 } },
-      { "label": "Tighten structure to regain pace.", "weights": { "ruler": 2, "everyman": 1 } },
-      { "label": "Simplify until ease returns.", "weights": { "innocent": 2, "caregiver": 1 } }
+      { "label": "Change something major—travel, take on a new project, or shake things up", "weights": { "rebirth": 2, "explorer": 1 } },
+      { "label": "Add more structure or efficiency to get my energy back", "weights": { "ruler": 2, "everyman": 1 } },
+      { "label": "Strip away anything that doesn't feel essential", "weights": { "innocent": 2, "caregiver": 1 } }
     ]
   },
   {
     "id": 14,
-    "text": "When people around you disagree, you tend to—",
+    "text": "When people around you are arguing about something, you usually—",
     "options": [
-      { "label": "Find the shared goal and move forward.", "weights": { "ruler": 2, "hero": 1 } },
-      { "label": "Let everyone speak, then weave the points.", "weights": { "caregiver": 2, "sage": 1 } },
-      { "label": "Drop a joke to cool the tension.", "weights": { "trickster": 2, "everyman": 1 } }
+      { "label": "Focus everyone on the shared goal and move forward", "weights": { "ruler": 2, "hero": 1 } },
+      { "label": "Give everyone space to share, then summarize what's been said", "weights": { "caregiver": 2, "sage": 1 } },
+      { "label": "Make a joke to release tension or reframe the situation", "weights": { "trickster": 2, "everyman": 1 } }
     ]
   },
   {
     "id": 15,
-    "text": "Under time pressure, you mostly—",
+    "text": "When you're under pressure and time is running out, you—",
     "options": [
-      { "label": "Cut through obstacles fast.", "weights": { "hero": 2, "ruler": 1 } },
-      { "label": "Scout a quick adaptable path.", "weights": { "explorer": 2, "visionary": 1 } },
-      { "label": "Keep people steady and aligned.", "weights": { "everyman": 2, "caregiver": 1 } }
+      { "label": "Cut through distractions and focus intensely on what needs to happen", "weights": { "hero": 2, "ruler": 1 } },
+      { "label": "Quickly find the most flexible path forward", "weights": { "explorer": 2, "visionary": 1 } },
+      { "label": "Keep everyone calm and working together", "weights": { "everyman": 2, "caregiver": 1 } }
     ]
   },
   {
     "id": 16,
-    "text": "Which motive feels most like you right now?",
+    "text": "What drives you most right now in your life?",
     "options": [
-      { "label": "Understanding and meaning.", "weights": { "philosopher": 2, "sage": 1 } },
-      { "label": "Love and intimacy.", "weights": { "lover": 2, "mother": 1 } },
-      { "label": "Freedom and exploration.", "weights": { "explorer": 2, "visionary": 1 } }
+      { "label": "Understanding myself and the world more deeply", "weights": { "philosopher": 2, "sage": 1 } },
+      { "label": "Building meaningful relationships and connections", "weights": { "lover": 2, "mother": 1 } },
+      { "label": "Having freedom and new experiences", "weights": { "explorer": 2, "visionary": 1 } }
     ]
   },
   {
     "id": 17,
-    "text": "When things are ambiguous, you—",
+    "text": "When a situation is unclear and you don't have all the information, you tend to—",
     "options": [
-      { "label": "Explore patterns as you go.", "weights": { "explorer": 2, "philosopher": 1 } },
-      { "label": "Set simple rules to stay steady.", "weights": { "ruler": 2, "innocent": 1 } },
-      { "label": "Keep people grounded and included.", "weights": { "everyman": 2, "caregiver": 1 } }
+      { "label": "Explore and figure things out as I go", "weights": { "explorer": 2, "philosopher": 1 } },
+      { "label": "Create simple guidelines to help me stay grounded", "weights": { "ruler": 2, "innocent": 1 } },
+      { "label": "Make sure everyone involved feels supported and included", "weights": { "everyman": 2, "caregiver": 1 } }
     ]
   },
   {
     "id": 18,
-    "text": "Your feedback style is often—",
+    "text": "When giving someone feedback or advice, you're usually—",
     "options": [
-      { "label": "Gentle and caring.", "weights": { "caregiver": 2, "lover": 1 } },
-      { "label": "Clear and structured.", "weights": { "ruler": 2, "sage": 1 } },
-      { "label": "Witty and revealing.", "weights": { "trickster": 2, "magician": 1 } }
+      { "label": "Kind and encouraging, focusing on what they do well", "weights": { "caregiver": 2, "lover": 1 } },
+      { "label": "Clear and honest about what needs to improve", "weights": { "ruler": 2, "sage": 1 } },
+      { "label": "Playful and insightful, pointing out things they might not see", "weights": { "trickster": 2, "magician": 1 } }
     ]
   },
   {
     "id": 19,
-    "text": "After a win, you tend to—",
+    "text": "After achieving something you've worked hard for, you usually—",
     "options": [
-      { "label": "Relax and celebrate with others.", "weights": { "everyman": 2, "innocent": 1 } },
-      { "label": "Shift focus to the next horizon.", "weights": { "explorer": 2, "rebirth": 1 } },
-      { "label": "Channel it into something meaningful.", "weights": { "lover": 2, "creator": 1 } }
+      { "label": "Celebrate with the people who matter to me", "weights": { "everyman": 2, "innocent": 1 } },
+      { "label": "Immediately start thinking about what's next", "weights": { "explorer": 2, "rebirth": 1 } },
+      { "label": "Use the momentum to create or build something meaningful", "weights": { "lover": 2, "creator": 1 } }
     ]
   },
   {
     "id": 20,
-    "text": "When a goal feels too far away, you—",
+    "text": "When a goal feels impossible or too far away, you—",
     "options": [
-      { "label": "Take the next small doable step.", "weights": { "innocent": 2, "everyman": 1 } },
-      { "label": "Reimagine it in a more inspiring form.", "weights": { "visionary": 2, "creator": 1 } },
-      { "label": "Turn frustration into focused drive.", "weights": { "hero": 2, "ruler": 1 } }
+      { "label": "Break it down and just focus on the next small step", "weights": { "innocent": 2, "everyman": 1 } },
+      { "label": "Reimagine it in a way that feels more inspiring", "weights": { "visionary": 2, "creator": 1 } },
+      { "label": "Push myself harder and commit to making it happen", "weights": { "hero": 2, "ruler": 1 } }
     ]
   },
   {
     "id": 21,
-    "text": "Which principle do you protect first?",
+    "text": "Which principle or value do you most strongly protect in your life?",
     "options": [
-      { "label": "Fairness and clear rules.", "weights": { "ruler": 2, "hero": 1 } },
-      { "label": "Loyalty and care for my people.", "weights": { "everyman": 2, "caregiver": 1 } },
-      { "label": "Truth and clarity.", "weights": { "sage": 2, "philosopher": 1 } }
+      { "label": "Fairness and doing what's right", "weights": { "ruler": 2, "hero": 1 } },
+      { "label": "Loyalty and taking care of the people I love", "weights": { "everyman": 2, "caregiver": 1 } },
+      { "label": "Honesty and seeking the truth", "weights": { "sage": 2, "philosopher": 1 } }
     ]
   },
   {
     "id": 22,
-    "text": "How do you manage risk?",
+    "text": "How do you usually handle risk in your decisions?",
     "options": [
-      { "label": "Bet big where the future feels clear.", "weights": { "visionary": 2, "hero": 1 } },
-      { "label": "Reduce variance with structure.", "weights": { "ruler": 2, "sage": 1 } },
-      { "label": "Experiment at the edges.", "weights": { "explorer": 2, "trickster": 1 } }
+      { "label": "I go for it when I have a strong vision, even if it's uncertain", "weights": { "visionary": 2, "hero": 1 } },
+      { "label": "I prefer to minimize risk with careful planning", "weights": { "ruler": 2, "sage": 1 } },
+      { "label": "I like to test things on a small scale first", "weights": { "explorer": 2, "trickster": 1 } }
     ]
   },
   {
     "id": 23,
-    "text": "Under stress, you more often—",
+    "text": "When you're stressed or overwhelmed, you're more likely to—",
     "options": [
-      { "label": "Over-control to feel safe.", "weights": { "ruler": 2, "shadow": -1 } },
-      { "label": "Withdraw into analysis.", "weights": { "philosopher": 2, "shadow": -1 } },
-      { "label": "Reach out for support.", "weights": { "lover": 2, "caregiver": 1 } }
+      { "label": "Try to control more things to feel safe", "weights": { "ruler": 2, "shadow": -1 } },
+      { "label": "Overthink and analyze everything", "weights": { "philosopher": 2, "shadow": -1 } },
+      { "label": "Reach out to someone I trust for support", "weights": { "lover": 2, "caregiver": 1 } }
     ]
   },
   {
     "id": 24,
-    "text": "In close relationships, you most need—",
+    "text": "In your closest relationships, what do you need most?",
     "options": [
-      { "label": "Depth and honesty.", "weights": { "lover": 2, "innocent": 1 } },
-      { "label": "Reliability and belonging.", "weights": { "everyman": 2, "caregiver": 1 } },
-      { "label": "Freedom to roam and dream together.", "weights": { "explorer": 2, "visionary": 1 } }
+      { "label": "Deep emotional connection and vulnerability", "weights": { "lover": 2, "innocent": 1 } },
+      { "label": "Trust, consistency, and knowing we've got each other's backs", "weights": { "everyman": 2, "caregiver": 1 } },
+      { "label": "Space to grow individually while staying connected", "weights": { "explorer": 2, "visionary": 1 } }
     ]
   },
   {
     "id": 25,
-    "text": "How do you prefer to spend your best hours?",
+    "text": "If you could spend your ideal day doing exactly what you want, what would it involve?",
     "options": [
-      { "label": "Designing systems and plans.", "weights": { "ruler": 2, "sage": 1 } },
-      { "label": "Making and refining craft.", "weights": { "creator": 2, "magician": 1 } },
-      { "label": "Hosting and connecting people.", "weights": { "lover": 2, "everyman": 1 } }
+      { "label": "Planning or organizing something meaningful", "weights": { "ruler": 2, "sage": 1 } },
+      { "label": "Making something with my hands or creativity", "weights": { "creator": 2, "magician": 1 } },
+      { "label": "Being with people I care about and creating good memories", "weights": { "lover": 2, "everyman": 1 } }
     ]
   },
   {
     "id": 26,
-    "text": "Your sense of spirituality feels like—",
+    "text": "How would you describe your relationship with spirituality or life's bigger questions?",
     "options": [
-      { "label": "Seeking meaning beyond appearances.", "weights": { "philosopher": 2, "sage": 1 } },
-      { "label": "Simple goodness and gratitude.", "weights": { "innocent": 2, "lover": 1 } },
-      { "label": "Vision and synchronicity.", "weights": { "visionary": 2, "magician": 1 } }
+      { "label": "I think deeply about the meaning and purpose of everything", "weights": { "philosopher": 2, "sage": 1 } },
+      { "label": "I feel it through beauty, gratitude, and simple moments", "weights": { "innocent": 2, "lover": 1 } },
+      { "label": "I'm drawn to synchronicity, intuition, and the mysterious", "weights": { "visionary": 2, "magician": 1 } }
     ]
   },
   {
     "id": 27,
-    "text": "When criticized, you first—",
+    "text": "When someone criticizes you, your first reaction is usually to—",
     "options": [
-      { "label": "Clarify and act to improve.", "weights": { "hero": 2, "ruler": 1 } },
-      { "label": "Open a conversation.", "weights": { "lover": 2, "everyman": 1 } },
-      { "label": "Turn it into learning or humor.", "weights": { "trickster": 2, "magician": 1 } }
+      { "label": "Figure out if it's valid and improve if needed", "weights": { "hero": 2, "ruler": 1 } },
+      { "label": "Talk about it to understand their perspective better", "weights": { "lover": 2, "everyman": 1 } },
+      { "label": "Make light of it or turn it into a learning moment", "weights": { "trickster": 2, "magician": 1 } }
     ]
   },
   {
     "id": 28,
-    "text": "When your boundary is crossed, you—",
+    "text": "When someone crosses a personal boundary of yours, you—",
     "options": [
-      { "label": "Speak up and restate limits.", "weights": { "ruler": 2, "hero": 1 } },
-      { "label": "Try to understand the reason first.", "weights": { "sage": 2, "caregiver": 1 } },
-      { "label": "Laugh it off but stay aware.", "weights": { "trickster": 2, "explorer": 1 } }
+      { "label": "Call it out directly and restate my limits", "weights": { "ruler": 2, "hero": 1 } },
+      { "label": "Try to understand why they did it before responding", "weights": { "sage": 2, "caregiver": 1 } },
+      { "label": "Keep it light but stay aware of it going forward", "weights": { "trickster": 2, "explorer": 1 } }
     ]
   },
   {
     "id": 29,
-    "text": "In community, your natural role is—",
+    "text": "In a community or group setting, what role do you naturally fall into?",
     "options": [
-      { "label": "The organizer who sets direction.", "weights": { "ruler": 2, "hero": 1 } },
-      { "label": "The connector who keeps everyone included.", "weights": { "everyman": 2, "caregiver": 1 } },
-      { "label": "The thinker who holds meaning.", "weights": { "sage": 2, "philosopher": 1 } }
+      { "label": "The organizer who helps everyone stay focused", "weights": { "ruler": 2, "hero": 1 } },
+      { "label": "The connector who makes sure no one is left out", "weights": { "everyman": 2, "caregiver": 1 } },
+      { "label": "The thinker who helps everyone see the bigger picture", "weights": { "sage": 2, "philosopher": 1 } }
     ]
   },
   {
     "id": 30,
-    "text": "How do you approach personal change?",
+    "text": "How do you typically approach making a major change in your life?",
     "options": [
-      { "label": "Start fresh and rebuild.", "weights": { "rebirth": 2, "explorer": 1 } },
-      { "label": "Imagine a better version and work toward it.", "weights": { "creator": 2, "visionary": 1 } },
-      { "label": "Stabilize through steady habits.", "weights": { "ruler": 2, "innocent": 1 } }
+      { "label": "Let go of what isn't working and build something completely new", "weights": { "rebirth": 2, "explorer": 1 } },
+      { "label": "Imagine the future I want and work toward it step by step", "weights": { "creator": 2, "visionary": 1 } },
+      { "label": "Create routines and structure to make the change sustainable", "weights": { "ruler": 2, "innocent": 1 } }
     ]
   },
- {
-  "id": 31,
-  "text": "When seeking truth, you—",
-  "options": [
-    { "label": "Reason it out step by step.", "weights": { "philosopher": 2, "sage": 1 } },
-    { "label": "Test ideas in action.", "weights": { "hero": 2, "ruler": 1 } },
-    { "label": "Flip perspectives to see hidden truth.", "weights": { "magician": 2, "trickster": 1 } }
-  ]
-},
-{
-  "id": 32,
-  "text": "If you could leave one legacy, it would be—",
-  "options": [
-    { "label": "A web of care that outlives me.", "weights": { "mother": 2, "caregiver": 1 } },
-    { "label": "A clear path into a better future.", "weights": { "visionary": 2, "ruler": 1 } },
-    { "label": "Works that keep teaching and inspiring.", "weights": { "creator": 2, "sage": 1 } }
-  ]
-}
+  {
+    "id": 31,
+    "text": "When trying to get to the truth of something, you're most likely to—",
+    "options": [
+      { "label": "Think it through logically and carefully", "weights": { "philosopher": 2, "sage": 1 } },
+      { "label": "Test it out in real life and see what happens", "weights": { "hero": 2, "ruler": 1 } },
+      { "label": "Look at it from unexpected angles to see what's hidden", "weights": { "magician": 2, "trickster": 1 } }
+    ]
+  },
+  {
+    "id": 32,
+    "text": "If you could leave behind one thing that would outlast you, it would be—",
+    "options": [
+      { "label": "A community or relationships that continue to support each other", "weights": { "mother": 2, "caregiver": 1 } },
+      { "label": "A vision or idea that inspires others to keep building", "weights": { "visionary": 2, "ruler": 1 } },
+      { "label": "Creative work that continues to teach or move people", "weights": { "creator": 2, "sage": 1 } }
+    ]
+  }
 ]
-
-

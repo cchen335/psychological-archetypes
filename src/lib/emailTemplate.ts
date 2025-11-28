@@ -51,7 +51,7 @@ export function generateArchetypeEmailHTML({
         margin: 0 0 36px;
       }
 
-      /* 为了兼容邮件客户端，这里不用 flex，用 inline-block + text-align */
+      /* 用 inline-block + text-align，兼容邮件客户端 */
       .cards {
         text-align: center;
         font-size: 0; /* 去掉 inline-block 之间的空隙 */
@@ -73,6 +73,8 @@ export function generateArchetypeEmailHTML({
 
       .card-inner {
         padding: 14px 16px 18px;
+        /* 给文字区域一个最小高度，让底部更齐 */
+        min-height: 170px;
       }
 
       /* 固定图片高度，保证三张卡片顶部对齐 */
@@ -156,7 +158,7 @@ export function generateArchetypeEmailHTML({
           <div class="card">
             <div class="card-image">
               <img
-                src="${baseUrl}/archetypes/${i.key}.webp?v=1"
+                src="${baseUrl}/archetypes/${i.key}.webp?v=2"
                 alt="${i.label}"
               />
             </div>

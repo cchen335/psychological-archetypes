@@ -1,0 +1,149 @@
+// src/lib/archetypeDescriptions.ts
+
+import type { ArchetypeKey } from "./archetypes";
+
+// 每个 archetype 的长段落文案
+export const archetypeDescriptions: Record<ArchetypeKey, string> = {
+  sage: `You are driven by a hunger to understand — not just how things work, but why they exist. You observe patterns, analyze structure, and turn confusion into clarity. Knowledge gives you freedom, and logic gives you calm. Yet when reflection becomes excess, thought can harden into distance. The true Sage learns when to stop seeking and begin perceiving — when wisdom is not accumulation but awakening. In that pause, understanding becomes compassion.`,
+
+  philosopher: `You live within thought, drawing connections between the abstract and the intimate. Questions are your companions, and you turn them into frameworks that help life make sense. You are not just a thinker, but a weaver of meaning. When overused, this gift can spiral into analysis without action or elegant theories that never touch the ground. Your path is to let insight return to the body — allowing your reflections to become choices, relationships, and lived truths.`,
+
+  explorer: `You feel most alive when you are moving toward the unknown. New places, ideas, and perspectives call to you, inviting you to stretch beyond the familiar. Freedom matters more than certainty, and you learn through direct experience rather than second-hand instruction. When restlessness takes over, you may drift or escape instead of committing. Your growth lies in choosing a direction that still leaves room to roam — building a life that is spacious, yet anchored.`,
+
+  creator: `For you, life is raw material for expression. You are always composing, designing, or imagining a better form for what already exists. Ideas arrive in rich detail, and you feel a quiet joy when something inner finally takes shape in the world. Yet perfectionism can freeze your momentum, and self-critique can drown out your curiosity. You flourish when you treat every attempt as a draft, letting playfulness and iteration carry your work forward.`,
+
+  lover: `You experience the world through depth of feeling and connection. Beauty, intimacy, and presence are not luxuries for you but ways of knowing what is truly alive. You offer devotion and attunement, making others feel seen and cherished. When fear enters, attachment can tighten into jealousy, over-merging, or losing yourself in another's needs. Your path is to love with open eyes — honouring your own centre while allowing closeness to soften, not swallow, who you are.`,
+
+  caregiver: `You naturally notice who is struggling and what is needed. Protection, support, and quiet reliability are how you express love. Others lean on your steadiness, trusting that you will hold things together when life becomes difficult. Yet if you neglect your own limits, care can turn into obligation, exhaustion, or subtle resentment. Your evolution is learning that saying "no" can also be an act of care — creating a rhythm of giving that is sustainable, mutual, and kind to you as well.`,
+
+  everyman: `You are drawn to what is honest, human, and shared. Hierarchies and specialness do not impress you as much as sincerity and mutual respect. People feel relaxed around you; you make spaces feel inclusive and real. When you start shrinking yourself to keep the peace, though, you may mute your own desires or settle for "good enough." Your work is to bring your full voice into the circle — trusting that belonging can hold difference, not just sameness.`,
+
+  hero: `Challenge wakes up your strength. You move toward obstacles with determination, wanting to prove that effort, courage, and discipline can change what seems fixed. Others may rely on you to "make things happen" when stakes are high. Yet if your worth is tied only to winning or enduring, you can become hard on yourself and others, turning life into a series of battles. True heroism for you is fighting for what matters, not just against what threatens — including learning to rest without feeling defeated.`,
+
+  ruler: `You have a natural instinct for structure. You bring order to chaos, shaping systems that allow others to flourish. Responsibility comes naturally to you; you prefer design over disorder, decision over drift. Yet the burden of control can become a cage. True rulership requires trust — the art of governing by clarity, not command. When you learn to build frameworks that liberate rather than confine, your authority transforms into harmony.`,
+
+  visionary: `You see further than most — sensing patterns, futures, and possibilities long before they are obvious. Ideas arrive as whole landscapes rather than isolated points, and you are often the one naming a direction no one has quite articulated yet. When ungrounded, you may drift into ideals that never meet reality, or feel misunderstood and distant. Your growth lies in translating vision into clear steps and shared language, so that what you glimpse inwardly can become a path that others can actually walk with you.`,
+
+  magician: `You are attuned to the hidden logic of change — how a shift in perspective, story, or system can transform an entire situation. You sense connections between inner and outer worlds and are drawn to practices that catalyse deep renewal. In shadow, this gift can slip into control, obscurity, or bypassing concrete issues with spiritual or psychological language. Your task is to use your insight transparently and ethically, inviting others into the process so transformation feels co-created rather than imposed.`,
+
+  trickster: `You notice the cracks in every pattern and instinctively reach for humour, play, or mischief to open them wider. Rules are suggestions to you, and you reveal truth by turning things upside down. This can bring lightness, creativity, and much-needed flexibility to rigid situations. When reactive, though, you may hide behind irony, create chaos, or wound trust just to avoid boredom. Your evolution is learning when to disrupt and when to stabilise — using your wit in service of freedom, not just entertainment.`,
+
+  innocent: `At your core you carry a genuine trust that life, people, and yourself can return to goodness. You see simple joys others rush past, and your hope can soften even hardened spaces. Yet when reality disappoints you, you may withdraw into avoidance, denial, or wishful thinking. The invitation for you is not to abandon your purity of heart, but to let it mature — seeing clearly without losing faith, and choosing responsibility not as a burden, but as a way to protect what is precious to you.`,
+
+  mother: `You hold space for others to grow. Whether through literal caregiving or the way you build teams, homes, or projects, you create a sense of warmth, continuity, and "home base." People come to you to be grounded and held. In shadow, protection can slide into control, over-involvement, or guilt-based loyalty. Your path is to nurture without possession — trusting that what you have tended can stand on its own, and that you are allowed to have a life beyond what you care for.`,
+
+  rebirth: `You move through life in waves of ending and beginning. When something no longer fits, a part of you knows it must die so something truer can emerge. Crises become turning points; you shed skins others might cling to for years. The risk is becoming addicted to rupture itself, constantly burning down what you have built before it has time to deepen. Your growth lies in honouring both destruction and continuity — letting renewal root, so that each new chapter can actually be lived, not just initiated.`,
+
+  shadow: `You are intimate with the hidden side of experience — the feelings, desires, and stories that polite surfaces prefer to ignore. Rather than being your flaw, this sensitivity is an invitation to integration. When rejected, it can show up as self-sabotage, secrecy, or harsh judgement of yourself and others. When welcomed, it becomes a source of depth, honesty, and compassion. Your journey is to meet what emerges in the dark with curiosity, allowing awareness to turn what once felt threatening into reclaimed power.`,
+};
+
+// 特定组合的定制叙述
+const narrativeMap: Partial<Record<string, string>> = {
+  // Sage + Philosopher combinations
+  "sage-philosopher-explorer": `If you could step outside yourself and watch your own story unfold, you might notice someone who moves between library and open road — collecting wisdom not to hoard it, but to test it against the texture of living. You think deeply, then walk into the unknown to see if those thoughts hold up. There's a restlessness in you that refuses to let understanding become abstract. You're building a philosophy that breathes.`,
+  
+  "sage-philosopher-creator": `Picture someone who sits at the intersection of thought and craft — someone who doesn't just want to understand the world, but to remake it with precision and care. You are both the architect of ideas and the hands that bring them into form. When you look at yourself from a distance, you see a person refining their vision through iteration, returning again and again to the question: what does clarity actually look like when it becomes real?`,
+
+  "sage-creator-explorer": `There's a version of you that an observer might see: the one who moves through life with a curious intensity, always asking "why" and "what if," then translating those questions into something tangible. You don't just want to know — you want to make, to test, to wander into new territory with your creations trailing behind you like breadcrumbs. You are someone learning to trust both insight and improvisation.`,
+
+  // Lover combinations
+  "lover-caregiver-everyman": `If someone were narrating your life, they might describe you as the one who holds the room together — not through force, but through presence. You feel what others feel, you notice what they need, and you create spaces where people can just be. There's a warmth in you that others trust without thinking. But beneath that, there's also someone learning that care doesn't mean self-erasure — that your own heart deserves the same tenderness you offer so freely.`,
+
+  "lover-creator-visionary": `Imagine watching yourself from above: someone who moves through the world hungry for beauty, connection, and meaning. You don't just experience life — you shape it, sensing the emotional architecture beneath every moment and wanting to craft something more resonant, more alive. You are both devotee and designer, someone learning to build futures that honour the depth of what you feel.`,
+
+  "lover-explorer-innocent": `An outside observer might see you as someone chasing aliveness — not recklessly, but with an open heart that hasn't forgotten how to hope. You move toward connection and possibility with a kind of vulnerable courage, willing to be changed by what you encounter. Your story is one of trust meeting curiosity, of intimacy woven through freedom. You're learning that staying soft doesn't mean staying still.`,
+
+  // Hero combinations
+  "hero-ruler-sage": `If you could watch your own trajectory, you'd see someone who doesn't just face challenges — you systematize them, breaking obstacles down into steps and structures. You lead with clarity and discipline, and others follow because your presence creates order in chaos. But beneath the armor, there's also a thinker, someone who knows that true strength isn't just endurance — it's the wisdom to know when to push forward and when to pause.`,
+
+  "hero-visionary-creator": `Picture someone who looks at the horizon and sees not just possibility, but responsibility. You take on challenges with the belief that action can shape a better future, and you're willing to build that future with your own hands. An observer might see you as someone driven by ideals made concrete — a person learning that courage isn't just about fighting, but about daring to create what doesn't yet exist.`,
+
+  // Explorer combinations
+  "explorer-visionary-creator": `From outside, your life might look like a constant motion toward the new — places, ideas, futures you can almost taste but haven't touched yet. You're not wandering aimlessly; you're mapping territory that others haven't named. You imagine, you make, you move. Your story is one of restless creation, someone learning that freedom isn't running away from limits — it's building a life spacious enough to hold both change and commitment.`,
+
+  "explorer-trickster-magician": `If someone were telling your story, they might describe you as the shapeshifter — always testing edges, flipping perspectives, finding the hidden door in every situation. You move through life with a playful irreverence, but there's depth beneath the mischief. You're learning how change really works, not through force but through flexibility and timing. Your path is teaching you that transformation doesn't have to be solemn — it can be curious, adaptive, alive.`,
+
+  // Caregiver + Mother combinations
+  "caregiver-mother-everyman": `An observer watching your life might notice someone who creates home wherever they go — not a place, but a feeling. You hold, you tend, you make others feel safe enough to grow. There's a groundedness in you that people lean into without thinking. But your story also includes the quiet moments when you wonder: who takes care of the caretaker? You're learning that true nurturing includes boundaries, rest, and permission to be held too.`,
+
+  // Rebirth combinations
+  "rebirth-explorer-shadow": `If you could step back and watch yourself move through time, you'd see someone who transforms constantly — not because they're unstable, but because they refuse to carry what no longer fits. You walk into the dark, you let go, you emerge different. An outside voice might say: here is someone learning that endings aren't failures, they're thresholds. You're discovering that the parts of yourself you thought you had to hide are often the ones holding your greatest power.`,
+
+  "rebirth-magician-creator": `Picture someone who dismantles and rebuilds — not just external things, but themselves. You are both destroyer and maker, someone attuned to the rhythms of death and birth in every process. You sense when something needs to end, and you have the courage to let it fall apart so something truer can be crafted from the pieces. Your journey is about learning to stay present through both dissolution and emergence, trusting the alchemy of your own becoming.`,
+
+  // Ruler + Visionary combinations
+  "ruler-visionary-sage": `From a distance, your story might look like someone building bridges between "what is" and "what could be." You see the future clearly, you design systems to get there, and you think through the implications with care. You lead not by force but by clarity — creating structures that help others move toward the horizon you've glimpsed. Your work is learning that great leadership means holding vision and detail, possibility and precision, all at once.`,
+
+  // Philosopher + Sage combinations
+  "philosopher-sage-innocent": `An outside narrator might describe you as someone who seeks truth with an almost childlike sincerity — you genuinely believe understanding matters, that clarity can heal, that goodness isn't naivety. You think deeply, but you haven't lost your capacity for wonder. Your path is about protecting that rare combination: the wisdom to see clearly and the heart to stay hopeful.`,
+
+  // Trickster combinations
+  "trickster-creator-lover": `If someone were watching your journey, they might see you as the one who refuses to take anything too seriously — except beauty, connection, and the joy of making. You play with form, you question rules, and you craft experiences that surprise and delight. Beneath the playfulness, there's real devotion. You're learning that irreverence and intimacy aren't opposites — they're partners in keeping life alive.`,
+};
+
+// 生成关键词用于匹配叙述
+function getComboKey(...keys: ArchetypeKey[]): string {
+  return keys.map((k) => k.toLowerCase()).sort().join("-");
+}
+
+// 根据 3 个 archetype 生成综合 narrative（优化版）
+export function generateCombinedNarrative(
+  a1: ArchetypeKey,
+  a2: ArchetypeKey,
+  a3: ArchetypeKey
+): string {
+  const key1 = `${a1}-${a2}-${a3}`.toLowerCase();
+  const key2 = getComboKey(a1, a2, a3);
+  
+  // 尝试精确匹配
+  if (narrativeMap[key1]) return narrativeMap[key1];
+  if (narrativeMap[key2]) return narrativeMap[key2];
+  
+  // 尝试双原型组合
+  const pair1 = `${a1}-${a2}`.toLowerCase();
+  const pair2 = `${a1}-${a3}`.toLowerCase();
+  const pair3 = `${a2}-${a3}`.toLowerCase();
+  
+  // 根据主要原型组合生成叙述
+  const narratives: Record<string, string> = {
+    // Thinking-oriented combinations
+    "sage-philosopher": `From an outside perspective, your life unfolds as a search for understanding that never quite settles. You are someone who thinks deeply, questions persistently, and builds frameworks to make sense of complexity. But there's also a person beneath the analysis — someone learning that wisdom isn't just about knowing more, but about integrating what you know into how you live.`,
+    
+    "sage-visionary": `If you could watch yourself from above, you'd see someone scanning both past and future — learning from patterns while sensing what's emerging just beyond the horizon. You are the bridge between understanding and anticipation, someone who knows that real clarity includes foresight. Your journey is about grounding vision in wisdom, so insight becomes direction.`,
+    
+    // Feeling-oriented combinations
+    "lover-caregiver": `An observer watching your story would notice someone who lives through connection — feeling what others feel, tending to what they need, creating intimacy with quiet devotion. But they'd also see the moments when you wonder: who holds me? You're learning that love isn't diminishment, and that protecting your own boundaries is also an act of care.`,
+    
+    "lover-innocent": `Picture someone moving through life with their heart still open — choosing trust even when it's risky, believing in beauty even when it's hidden. You are learning that vulnerability isn't weakness, and that staying soft in a hard world is its own form of courage. Your path is about maturing your hope without losing it.`,
+    
+    // Action-oriented combinations
+    "hero-ruler": `From outside, your trajectory looks like someone who doesn't wait for permission — you see what needs to change, you design the structure to change it, and you act. You combine courage with strategy, endurance with planning. But your deeper story is learning that strength isn't just force — it's also the wisdom to know when to step back and let others lead.`,
+    
+    "hero-explorer": `If someone were narrating your life, they might describe you as restless in the best sense — always moving toward challenge, always testing your limits, never content to stay comfortable. You take action and you seek freedom, but you're learning that true adventure isn't running from commitment — it's choosing battles worth fighting and paths worth following.`,
+    
+    // Creative combinations
+    "creator-visionary": `An outside voice might say: here is someone who doesn't just imagine the future — they build it. You see possibilities others miss, and you have the hands and heart to bring them into form. Your story is one of ideation meeting execution, of dreams becoming real through careful, devoted work.`,
+    
+    "creator-explorer": `Picture someone who makes and moves in equal measure — crafting something, then venturing beyond it to see what else is possible. You don't create to settle; you create to discover. You're learning that expression and exploration aren't separate — they're the rhythm of a life lived curiously.`,
+    
+    // Transformation combinations
+    "rebirth-magician": `From a distance, your life looks like a series of metamorphoses — you shed what no longer fits, you transform what remains, you emerge renewed. You are attuned to cycles of death and birth, both literal and metaphorical. Your work is learning to honor both endings and beginnings, to let change be deep rather than constant.`,
+    
+    "rebirth-shadow": `An observer might describe you as someone intimate with the dark — not avoiding what's difficult, but meeting it, learning from it, allowing it to change you. You know that growth often requires dissolution first. Your path is about integration: bringing what was hidden into awareness, so that every ending becomes a doorway rather than a dead end.`,
+    
+    // Community-oriented combinations
+    "everyman-caregiver": `If someone were watching, they'd see you as the one who makes everyone feel included — creating belonging not through grand gestures but through steady, sincere presence. You hold space, you keep peace, you care for the collective. But beneath that, you're also learning that you don't have to shrink yourself to keep the group intact.`,
+    
+    "ruler-everyman": `Picture someone who leads by creating fairness — not dominating, but designing systems that work for everyone. You organize, you structure, but you do it with an eye toward inclusion and shared benefit. Your journey is about balancing authority with humility, order with openness.`,
+  };
+  
+  // 尝试匹配双原型组合
+  if (narratives[pair1]) return narratives[pair1];
+  if (narratives[pair2]) return narratives[pair2];
+  if (narratives[pair3]) return narratives[pair3];
+  
+  // 默认叙述（旁观者视角，动态化）
+  const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+  
+  return `If you could step outside yourself and observe your own story, you might see someone weaving together ${a1}, ${a2}, and ${a3} — three distinct forces that shape how you move through the world. This isn't a fixed identity, but a living constellation: the way you seek, the way you connect, the way you transform. Your journey is learning how these patterns serve you, when they limit you, and what becomes possible when you bring them into conscious awareness. You are both the story being told and the one beginning to narrate it with clearer eyes.`;
+}

@@ -1,0 +1,282 @@
+// src/app/api/send-report/route.ts
+import { NextRequest, NextResponse } from "next/server";
+import nodemailer from "nodemailer";
+
+import { ARCHETYPE_INFO, ArchetypeKey } from "@/lib/archetypes";
+import {
+  archetypeDescriptions,
+  generateCombinedNarrative,
+} from "@/lib/archetypeDescriptions";
+
+// ---------- 基础配置 ----------
+
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASSWORD,
+  },
+});
+
+const FROM = process.env.GMAIL_USER || "archevoyage.reports@gmail.com";
+
+const RAW_DOMAIN =
+  process.env.NEXT_PUBLIC_DOMAIN ||
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  "https://psychological-archetypes.vercel.app";
+
+const BASE_URL = RAW_DOMAIN.replace(/\/+$/, "");
+
+// ---------- 路由处理 ----------
+
+export async function POST(req: NextRequest) {
+  try {
+    const body = await req.json();
+
+    const email = body.email as string | undefined;
+    const archetypesRaw = Array.isArray(body.archetypes)
+      ? body.archetypes
+      : [];
+
+    if (!email) {
+      return NextResponse.json(
+        { error: "Email is required" },
+        { status: 400 }
+      );
+    }
+
+    if (archetypesRaw.length < 3) {
+      return NextResponse.json(
+        { error: "Not enough archetypes" },
+        { status: 400 }
+      );
+    }
+
+    const [a1, a2, a3] = archetypesRaw;
+
+    const keys = [a1, a2, a3].map((a: any) =>
+      String(a?.key ?? "").toLowerCase()
+    ) as ArchetypeKey[];
+
+    const combinedNarrative =
+      typeof body.combinedNarrative === "string" &&
+      body.combinedNarrative.trim().length > 0
+        ? body.combinedNarrative
+        : generateCombinedNarrative(keys[0], keys[1], keys[2]);
+
+    // ---------- 整理每个 archetype 的信息 + 图片 URL ----------
+
+    const safeArchetypes = keys.map((key, index) => {
+      const raw = archetypesRaw[index];
+      const info = ARCHETYPE_INFO[key];
+
+      const label = raw?.label ?? info?.name ?? "Archetype";
+      const role =
+        raw?.role ??
+        (index === 0 ? "Dominant" : index === 1 ? "Auxiliary" : "Potential");
+      const strength = raw?.strength ?? info?.strength ?? "";
+      const shadow = raw?.shadow ?? info?.shadow ?? "";
+      const paragraph =
+        raw?.paragraph ?? archetypeDescriptions[key] ?? "";
+
+      const rawImagePath =
+        raw?.image ?? info?.image ?? `/archetypes/${key}.webp`;
+
+      const normalizedPath =
+        "/" + String(rawImagePath).replace(/^\/+/, "");
+
+      const imageUrl = `${BASE_URL}${normalizedPath}`;
+
+      return { key, label, role, strength, shadow, paragraph, imageUrl };
+    });
+
+    // ---------- 上方三张卡片 HTML（改进对齐）---------- 
+
+    const cardsHtml = safeArchetypes
+      .map(
+        (a) => `
+          <td align="center" valign="top" style="padding:0 10px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-radius:24px;border:1px solid #e5e7eb;overflow:hidden;width:100%;max-width:200px;">
+              <tr>
+                <td style="padding:0;line-height:0;">
+                  <img
+                    src="${a.imageUrl}"
+                    alt="${a.label}"
+                    width="200"
+                    height="280"
+                    style="display:block;width:100%;height:auto;max-width:200px;border:0;outline:none;text-decoration:none;"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td style="background:#ffffff;padding:20px;text-align:left;">
+                  <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:14px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#111827;margin-bottom:6px;">
+                    ${a.label}
+                  </div>
+                  <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#9ca3af;margin-bottom:16px;">
+                    ${a.role}
+                  </div>
+
+                  <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#9ca3af;margin-bottom:6px;">
+                    Strength
+                  </div>
+                  <div style="font-family:Georgia,'Times New Roman',serif;font-size:13px;line-height:1.6;color:#4b5563;margin-bottom:12px;">
+                    ${a.strength}
+                  </div>
+
+                  <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#9ca3af;margin-bottom:6px;">
+                    Shadow
+                  </div>
+                  <div style="font-family:Georgia,'Times New Roman',serif;font-size:13px;line-height:1.6;color:#4b5563;">
+                    ${a.shadow}
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>`
+      )
+      .join("");
+
+    // ---------- 下方三段长文案 HTML ----------
+
+    const detailsHtml = safeArchetypes
+      .map(
+        (a) => `
+          <tr>
+            <td style="padding-top:40px;">
+              <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:#6b7280;margin-bottom:12px;">
+                ${a.label} · ${a.role}
+              </div>
+              <div style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.8;color:#111827;">
+                ${a.paragraph}
+              </div>
+            </td>
+          </tr>`
+      )
+      .join("");
+
+    // ---------- 整封邮件 HTML（添加问候语）----------
+
+    const html = `<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body style="margin:0;padding:0;background:#f9fafb;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;">
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0" style="border-collapse:collapse;">
+      <tr>
+        <td align="center" style="padding:40px 20px;">
+          <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width:680px;background:#ffffff;border-radius:16px;box-shadow:0 4px 6px rgba(0,0,0,0.05);border-collapse:collapse;">
+            
+            <!-- 问候语区域 -->
+            <tr>
+              <td style="padding:48px 48px 24px;text-align:left;">
+                <h2 style="margin:0 0 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:24px;font-weight:600;color:#111827;line-height:1.3;">
+                  Hello there 👋
+                </h2>
+                <p style="margin:0 0 12px;font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.7;color:#374151;">
+                  Thank you for taking the time to explore your psychological landscape with us. 
+                  Your journey through the archetypes reveals something profound — the patterns 
+                  and stories that shape who you are.
+                </p>
+                <p style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.7;color:#374151;">
+                  Below, you'll find your unique archetypal constellation. We hope this brings 
+                  clarity, inspiration, and a deeper understanding of yourself.
+                </p>
+              </td>
+            </tr>
+
+            <!-- 标题 -->
+            <tr>
+              <td style="padding:24px 48px;text-align:center;border-top:1px solid #e5e7eb;">
+                <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:#6b7280;font-weight:600;">
+                  Your Archetypal Constellation
+                </div>
+              </td>
+            </tr>
+
+            <!-- 三张卡片 -->
+            <tr>
+              <td align="center" style="padding:0 48px 32px;">
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+                  <tr>
+                    ${cardsHtml}
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- 混合叙述 -->
+            <tr>
+              <td style="padding:32px 48px;border-top:1px solid #e5e7eb;">
+                <div style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.9;color:#1f2937;font-style:italic;text-align:left;">
+                  ${combinedNarrative}
+                </div>
+              </td>
+            </tr>
+
+            <!-- 详细描述 -->
+            <tr>
+              <td style="padding:0 48px;">
+                <table role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0" style="border-collapse:collapse;">
+                  ${detailsHtml}
+                </table>
+              </td>
+            </tr>
+
+            <!-- 结尾语 -->
+            <tr>
+              <td style="padding:40px 48px 48px;">
+                <div style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.7;color:#6b7280;text-align:left;border-top:1px solid #e5e7eb;padding-top:32px;">
+                  <p style="margin:0 0 16px;">
+                    We hope this resonates with where you are on your journey. Remember, 
+                    archetypes are not fixed — they evolve as you do.
+                  </p>
+                  <p style="margin:0;">
+                    You can always return to <a href="${BASE_URL}" style="color:#3b82f6;text-decoration:none;">ArcheVoyage</a> 
+                    and retake the assessment as your story unfolds.
+                  </p>
+                </div>
+              </td>
+            </tr>
+
+            <!-- 签名 -->
+            <tr>
+              <td style="padding:0 48px 48px;">
+                <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:14px;color:#9ca3af;text-align:left;">
+                  With warmth,<br>
+                  <span style="color:#111827;font-weight:500;">The ArcheVoyage Team</span>
+                </div>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>`;
+
+    // ---------- 发送邮件 ----------
+
+    const info = await transporter.sendMail({
+      from: `ArcheVoyage <${FROM}>`,
+      to: email,
+      subject: "Your ArcheVoyage Results — Your Archetypal Constellation ✨",
+      html,
+    });
+
+    console.log("Email sent successfully:", info.messageId);
+
+    return NextResponse.json({ ok: true });
+  } catch (err) {
+    console.error("Send report error:", err);
+    return NextResponse.json(
+      { error: "Failed to send report", details: err instanceof Error ? err.message : String(err) },
+      { status: 500 }
+    );
+  }
+}
