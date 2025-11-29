@@ -157,8 +157,8 @@ export default function ResultPageClient() {
               key={idx}
               className="bg-white/5 rounded-3xl overflow-hidden border border-white/10 hover:border-white/20 transition-all"
             >
-              {/* 图片 - 改为 1:2 比例 */}
-              <div className="w-full aspect-[1/2] relative">
+              {/* 图片 - 1:1.4 比例 */}
+              <div className="w-full aspect-[10/14] relative">
                 <img
                   src={info.image}
                   alt={info.name}
@@ -219,21 +219,21 @@ export default function ResultPageClient() {
         <div className="space-y-8 mb-12">
           <div>
             <h3 className="text-xl font-light mb-2">
-              {firstInfo.name.toUpperCase()} · DOMINANT
+              {firstInfo.name.toUpperCase()} <span className="text-[10px] text-white/25 font-extralight tracking-wider">· DOMINANT</span>
             </h3>
             <p className="text-white/70 leading-relaxed font-light">{firstDesc}</p>
           </div>
 
           <div>
             <h3 className="text-xl font-light mb-2">
-              {secondInfo.name.toUpperCase()} · AUXILIARY
+              {secondInfo.name.toUpperCase()} <span className="text-[10px] text-white/25 font-extralight tracking-wider">· AUXILIARY</span>
             </h3>
             <p className="text-white/70 leading-relaxed font-light">{secondDesc}</p>
           </div>
 
           <div>
             <h3 className="text-xl font-light mb-2">
-              {thirdInfo.name.toUpperCase()} · POTENTIAL
+              {thirdInfo.name.toUpperCase()} <span className="text-[10px] text-white/25 font-extralight tracking-wider">· POTENTIAL</span>
             </h3>
             <p className="text-white/70 leading-relaxed font-light">{thirdDesc}</p>
           </div>
