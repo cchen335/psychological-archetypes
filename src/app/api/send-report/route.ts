@@ -6,12 +6,26 @@ export async function POST(request: NextRequest) {
   try {
     const { email, archetypes, roles } = await request.json();
 
+    console.log("📧 Send email request received:", { email, archetypes, roles });
+
     if (!email || !archetypes || archetypes.length < 3) {
+      console.error("❌ Missing required fields");
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
       );
     }
+
+    // 检查环境变量
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+      console.error("❌ Gmail credentials not found in environment variables");
+      return NextResponse.json(
+        { error: "Server configuration error" },
+        { status: 500 }
+      );
+    }
+
+    console.log("✅ Gmail credentials found");
 
     // Gmail SMTP 配置
     const transporter = nodemailer.createTransport({
@@ -21,6 +35,8 @@ export async function POST(request: NextRequest) {
         pass: process.env.GMAIL_APP_PASSWORD,
       },
     });
+
+    console.log("✅ Transporter created");
 
     // 获取三个原型的详细信息
     const [first, second, third] = archetypes;
@@ -239,7 +255,29 @@ ${narrative}
 </html>
     `;
 
-    // 发送邮件（带图片附件）
+    // 发送邮件（使用 URL 获取图片）
+    const domain = process.env.NEXT_PUBLIC_DOMAIN || 'http://localhost:3000';
+    
+    // 使用 fetch 获取图片并转换为 buffer
+    const fetchImageAsBuffer = async (archetypeName: string) => {
+      const imageUrl = `${domain}/archetypes/${archetypeName}.webp`;
+      console.log(`📥 Fetching image: ${imageUrl}`);
+      const response = await fetch(imageUrl);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch image: ${imageUrl}`);
+      }
+      const arrayBuffer = await response.arrayBuffer();
+      return Buffer.from(arrayBuffer);
+    };
+
+    console.log("📸 Fetching images...");
+    const [firstImage, secondImage, thirdImage] = await Promise.all([
+      fetchImageAsBuffer(first),
+      fetchImageAsBuffer(second),
+      fetchImageAsBuffer(third),
+    ]);
+    console.log("✅ All images fetched");
+
     const mailOptions = {
       from: process.env.GMAIL_USER,
       to: email,
@@ -248,29 +286,35 @@ ${narrative}
       attachments: [
         {
           filename: `${first}.webp`,
-          path: `./public/archetypes/${first}.webp`,
+          content: firstImage,
           cid: `image_${first}`,
         },
         {
           filename: `${second}.webp`,
-          path: `./public/archetypes/${second}.webp`,
+          content: secondImage,
           cid: `image_${second}`,
         },
         {
           filename: `${third}.webp`,
-          path: `./public/archetypes/${third}.webp`,
+          content: thirdImage,
           cid: `image_${third}`,
         },
       ],
     };
 
+    console.log("📨 Attempting to send email...");
+    console.log("📎 Attachments:", mailOptions.attachments.map(a => a.filename));
+
     await transporter.sendMail(mailOptions);
+
+    console.log("✅ Email sent successfully!");
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Error sending email:", error);
+    console.error("❌ Error sending email:", error);
+    console.error("Error details:", JSON.stringify(error, null, 2));
     return NextResponse.json(
-      { error: "Failed to send email" },
+      { error: "Failed to send email", details: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     );
   }
